@@ -3,7 +3,7 @@
 const express = require('express')
 const app = express()
 
-const port = 3000;
+const port = 8080;
 const productsRouter = require('./routes/products');
 
 // pour parser en json
@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 
 // to connect with products routing
 app.use("/products", productsRouter);
+
 /* Error handler middleware */
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
