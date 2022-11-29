@@ -37,7 +37,25 @@ async function create(product){
     return {message};
 }
 
+// update a product
+async function update(id, product){
+    const result = await db.query(
+        `UPDATE products
+    SET name='${product.name}'
+    WHERE id=20`
+    );
+
+    let message = 'Error in updating product';
+
+    if (result.affectedRows) {
+        message = 'Product updated successfully';
+    }
+
+    return {message};
+}
+
 module.exports = {
     getMultiple,
-    create
+    create,
+    update
 }
