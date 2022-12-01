@@ -19,6 +19,16 @@ async function getMultiple(page = 1){
     }
 }
 
+// get one product
+async function getOne(id){
+    const result = await db.query(
+        `SELECT * FROM products
+            WHERE id=${id}`
+    );
+
+    return {result};
+}
+
 // Post new product
 async function create(product){
     const result = await db.query(
@@ -71,6 +81,7 @@ async function remove(id){
 
 module.exports = {
     getMultiple,
+    getOne,
     create,
     update,
     remove

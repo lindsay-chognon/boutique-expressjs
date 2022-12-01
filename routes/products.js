@@ -13,6 +13,16 @@ router.get('/', async function(req, res, next) {
     }
 });
 
+/* GET one product */
+router.get('/:id', async function(req, res, next) {
+    try {
+        res.json(await products.getOne(req.params.id));
+    } catch (err) {
+        console.error(`Error while getting product`, err.message);
+        next(err);
+    }
+});
+
 /* POST product */
 router.post('/', async function(req, res, next) {
     try {
