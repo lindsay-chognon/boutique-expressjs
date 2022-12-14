@@ -33,5 +33,5 @@ app.use((err, req, res, next) => {
 
 // pour pouvoir lancer le serveur sur le port spécifié
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`App API boutique en ligne listening at http://localhost:${port}`);
 });
