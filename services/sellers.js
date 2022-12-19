@@ -19,7 +19,18 @@ async function getMultiple(page = 1){
     }
 }
 
+// get one product
+async function getOne(id){
+    const result = await db.query(
+        `SELECT * FROM sellers
+            WHERE id=${id}`
+    );
+
+    return {result};
+}
+
 
 module.exports = {
     getMultiple,
+    getOne
 }
