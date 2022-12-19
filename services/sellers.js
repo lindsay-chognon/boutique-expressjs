@@ -29,8 +29,28 @@ async function getOne(id){
     return {result};
 }
 
+// Post new seller
+// TODO : hash password
+async function create(seller){
+    const result = await db.query(
+        `INSERT INTO sellers 
+    (login, password)
+    VALUES 
+    ('${seller.login}', '${seller.password}')`
+    );
+
+    let message = 'Error in creating seller';
+
+    if (result.affectedRows) {
+        message = 'Seller created successfully';
+    }
+
+    return {message};
+}
+
 
 module.exports = {
     getMultiple,
-    getOne
+    getOne,
+    create
 }

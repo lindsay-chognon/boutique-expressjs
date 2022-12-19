@@ -23,4 +23,14 @@ router.get('/:id', async function(req, res, next) {
     }
 });
 
+/* POST product */
+router.post('/', async function(req, res, next) {
+    try {
+        res.json(await sellers.create(req.body));
+    } catch (err) {
+        console.error(`Error while creating seller`, err.message);
+        next(err);
+    }
+});
+
 module.exports = router;
