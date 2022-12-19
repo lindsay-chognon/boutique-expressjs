@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const sellers = require('../services/sellers');
+const products = require("../services/products");
 
 /* GET products */
 router.get('/', async function(req, res, next) {
@@ -29,6 +30,16 @@ router.post('/', async function(req, res, next) {
         res.json(await sellers.create(req.body));
     } catch (err) {
         console.error(`Error while creating seller`, err.message);
+        next(err);
+    }
+});
+
+/* PUT product */
+router.put('/:id', async function(req, res, next) {
+    try {
+        res.json(await sellers.update(req.params.id, req.body));
+    } catch (err) {
+        console.error(`Error while updating seller`, err.message);
         next(err);
     }
 });

@@ -48,9 +48,26 @@ async function create(seller){
     return {message};
 }
 
+// update a product
+async function update(id, seller){
+    const result = await db.query(
+        `UPDATE sellers
+    SET login = '${seller.login}', password = '${seller.password}'
+    WHERE id=1`
+    );
+
+    let message = 'Error in updating seller';
+
+    if (result.affectedRows) {
+        message = 'Seller updated successfully';
+    }
+
+    return {message};
+}
 
 module.exports = {
     getMultiple,
     getOne,
-    create
+    create,
+    update
 }
