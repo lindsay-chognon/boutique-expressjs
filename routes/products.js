@@ -43,7 +43,7 @@ router.put('/:id', async function(req, res, next) {
     }
 });
 
-/* DELETE programming language */
+/* DELETE product */
 router.delete('/:id', async function(req, res, next) {
     try {
         res.json(await products.remove(req.params.id));
