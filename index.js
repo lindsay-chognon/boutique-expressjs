@@ -5,6 +5,7 @@ const app = express()
 
 const port = 8080;
 const productsRouter = require('./routes/products');
+const sellersRouter = require('./routes/sellers');
 
 // pour parser en json
 app.use(express.json());
@@ -22,6 +23,9 @@ app.get("/", (req, res) => {
 
 // to connect with products routing
 app.use("/products", productsRouter);
+
+// to connect with sellers routing
+app.use("/sellers", sellersRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
