@@ -65,9 +65,25 @@ async function update(id, seller){
     return {message};
 }
 
+// delete a seller
+async function remove(id){
+    const result = await db.query(
+        `DELETE FROM sellers WHERE id=${id}`
+    );
+
+    let message = 'Error in deleting seller';
+
+    if (result.affectedRows) {
+        message = 'Seller deleted successfully';
+    }
+
+    return {message};
+}
+
 module.exports = {
     getMultiple,
     getOne,
     create,
-    update
+    update,
+    remove
 }

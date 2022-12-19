@@ -44,4 +44,14 @@ router.put('/:id', async function(req, res, next) {
     }
 });
 
+/* DELETE seller */
+router.delete('/:id', async function(req, res, next) {
+    try {
+        res.json(await sellers.remove(req.params.id));
+    } catch (err) {
+        console.error(`Error while deleting seller`, err.message);
+        next(err);
+    }
+});
+
 module.exports = router;
