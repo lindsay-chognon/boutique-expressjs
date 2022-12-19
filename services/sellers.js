@@ -53,7 +53,7 @@ async function update(id, seller){
     const result = await db.query(
         `UPDATE sellers
     SET login = '${seller.login}', password = '${seller.password}'
-    WHERE id=1`
+    WHERE id=${id}`
     );
 
     let message = 'Error in updating seller';
