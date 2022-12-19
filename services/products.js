@@ -52,7 +52,7 @@ async function update(id, product){
     const result = await db.query(
         `UPDATE products
     SET name='${product.name}'
-    WHERE id=20`
+    WHERE id=${id}`
     );
 
     let message = 'Error in updating product';
