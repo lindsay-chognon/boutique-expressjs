@@ -8,7 +8,9 @@ async function getMultiple(page = 1){
     const offset = helper.getOffset(page, config.listPerPage);
     const rows = await db.query(
         `SELECT * 
-    FROM sellers LIMIT ${offset},${config.listPerPage}`
+    FROM sellers 
+    INNER JOIN products on products.id_sellers = sellers.id
+    LIMIT ${offset},${config.listPerPage}`
     );
     const data = helper.emptyOrRows(rows);
     const meta = {page};
