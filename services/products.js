@@ -25,7 +25,8 @@ async function getMultiple(page = 1){
 async function getOne(id){
     const result = await db.query(
         `SELECT * FROM products
-            WHERE id=${id}`
+            INNER JOIN sellers on sellers.id = products.id_sellers
+            WHERE products.id=${id}`
     );
 
     return {result};
